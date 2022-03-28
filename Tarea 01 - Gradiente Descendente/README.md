@@ -2,20 +2,25 @@
 ## Reporte de resultados
 ### Descripción del algoritmo
 El algoritmo se implementó en Python3. Las funciones se definen de la siguiente forma:
+```
 def sphere(x, y):
 	return (x + 2)**2 + (y + 2)**2
 def rastrigin(x, y):
 	return (10 * 2) + (x**2) + (y**2) - 10 * np.cos(2*np.pi*x) - 10 * np.cos(2*np.pi*y)
+```
 
 Se definen parámetros iniciales y valores iniciales aleatorios:
+```
 dx = 0.1
 dy = 0.1
 h = 0.01
 n = 500
 x = randint(10)
 y = randint(10)
+```
 
 Se calculan diferencias finitas para x y para y de la siguiente forma:
+```
 #Diferencias finitas para x
 x_p = x + (dx / 2)
 x_n = x - (dx / 2)
@@ -28,11 +33,14 @@ y_n = y - (dy / 2)
 f_p = (x + 2)**2 + (y_p + 2)**2
 f_n = (x + 2)**2 + (y_n + 2)**2
 dpy = (f_p - f_n)/dy
+```
 
 Con los valores obtenidos de las diferencias finitas se obtiene el gradiente y se actualiza los valores de x y y:
+```
 grad = dpx + dpy
 x = x - (h * dpx)
 y = y - (h * dpy)
+```
 
 Este procedimiento se realiza un número n de veces para aproximar el valor obtenido lo más cercano posible al mínimo, mientras n sea más grande más cercana será la aproximación pero mayor el costo computacional.
 
@@ -42,11 +50,13 @@ El algoritmo se ejecutó 10 veces para cada función, los resultados se presenta
 ![Gráficas para rastrigin](graficas_rastrigin.png)
 
 La varianza y el valor medio obtenido para cada una de las funciones es:
+```
 Varianza resultados esfera:  8.771198380466263e-15
 Media de resultados esfera:  1.6459420753514793e-07
 
 Varianza resultados rastrigin:  357.170920941927
 Media de resultados rastrigin:  44.66241888525571
+```
 
 En el caso de la esfera podemos observar una varianza prácticamente de cero, lo que indica que en cada ejecución se llegó al mismo resultado. La media también es muy cercana al cero, en este caso se encontró con éxito el mínimo global de la función.
 En el caso de rastrigin observamos una varianza muy grande, lo que sugiere que el algoritmo exploró diferentes posibles soluciones encontrando diferentes mínimos locales.
