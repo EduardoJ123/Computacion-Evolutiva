@@ -1,5 +1,5 @@
 # Computación Evolutiva: Investigación e implementaciones
-# Autor: Eduardo Jiménez López
+## Autor: Eduardo Jiménez López
 ## Contenido
 ### Colmena de abejas artificial (abc)
 ### Optimización por forrajeo bacteriano (bfo)
